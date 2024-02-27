@@ -3,11 +3,19 @@
 namespace App\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-
+use App\Services\CalculatriceService;
 class CalculatriceTest extends TestCase
 {
-    public function testSomething(): void
+    public function testValidAddition(): void
     {
-        $this->assertTrue(true);
+
+        $calculatriceService = new CalculatriceService();
+        $this->assertEquals(3, $calculatriceService->add(2, 1));
+    }
+
+    public function testInValidAddition()
+    {
+        $calculatriceService = new CalculatriceService();
+        $this->assertEquals("Cannot add number to string", $calculatriceService->add("Bad", 2));
     }
 }
